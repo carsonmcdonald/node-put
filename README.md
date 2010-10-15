@@ -6,7 +6,13 @@ Pack multibyte binary values into buffers with specific endiannesses.
 Installation
 ============
 
+To install with [npm](http://github.com/isaacs/npm):
+ 
     npm install put
+
+To run the tests with [expresso](http://github.com/visionmedia/expresso):
+
+    expresso
 
 Examples
 ========
