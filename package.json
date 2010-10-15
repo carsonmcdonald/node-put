@@ -1,0 +1,16 @@
+{
+    "name" : "put",
+    "version" : "0.0.1",
+    "description" : "Pack multibyte binary values into buffers",
+    "modules" : {
+        "index" : "./lib/put.js"
+    },
+    "keywords": [ "put", "pack", "binary" ],
+    "license": { "type": "MIT/X11" }, 
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/substack/node-put.git"
+    }, 
+    "engines": { "node": ">=0.2.0" }
+}
+

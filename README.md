@@ -3,6 +3,11 @@ Put
 
 Pack multibyte binary values into buffers with specific endiannesses.
 
+Installation
+============
+
+    npm install put
+
 Examples
 ========
 
