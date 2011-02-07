@@ -21,15 +21,15 @@ exports.chain = function (assert) {
 };
 
 exports.parity = function (assert) {
-    [ 'lu', 'le', 'bu', 'be' ].forEach(function (end) {
+    [ 'le', 'be' ].forEach(function (end) {
         [ 8, 16, 32 ].forEach(function (n) {
             var max = Math.pow(2,n);
             var step = Math.max(1, Math.floor(max / 1000));
             
-            for (var i = -1 - n; i < max; i += step) {
+            for (var i = 0; i < max; i += step) {
                 var buf = Put()[ 'word' + n + end ](i).buffer();
                 var j = Binary.parse(buf)[ 'word' + n + end ]('j').vars.j;
-                assert.eql(i < 0 ? i + max : i, j);
+                assert.eql(i, j);
             }
         });
     });
