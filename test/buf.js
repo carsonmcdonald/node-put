@@ -21,7 +21,7 @@ exports.chain = function (assert) {
 };
 
 exports.parity = function (assert) {
-    [ 'le', 'be' ].forEach(function (end) {
+    [ 'lu', 'le', 'bu', 'be' ].forEach(function (end) {
         [ 8, 16, 32 ].forEach(function (n) {
             var max = Math.pow(2,n);
             var step = Math.max(1, Math.floor(max / 1000));

@@ -24,12 +24,17 @@ function Put () {
     };
     
     [ 8, 16, 32, 64 ].forEach((function (bits) {
-        this['word' + String(bits) + 'be'] = function (x) {
+        this['word' + bits + 'bu']
+        = this['word' + bits + 'be']
+        = function (x) {
             words.push({ endian : 'big', bytes : bits / 8, value : x });
             len += bits / 8;
             return this;
         };
-        this['word' + String(bits) + 'le'] = function (x) {
+        
+        this['word' + bits + 'lu']
+        = this['word' + bits + 'le']
+        = function (x) {
             words.push({ endian : 'little', bytes : bits / 8, value : x });
             len += bits / 8;
             return this;
