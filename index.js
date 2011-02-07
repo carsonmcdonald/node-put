@@ -23,7 +23,7 @@ function Put () {
         return this;
     };
     
-    [16,32,64].forEach((function (bits) {
+    [ 8, 16, 32, 64 ].forEach((function (bits) {
         this['word' + String(bits) + 'be'] = function (x) {
             words.push({ endian : 'big', bytes : bits / 8, value : x });
             len += bits / 8;

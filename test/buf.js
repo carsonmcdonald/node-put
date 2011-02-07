@@ -1,6 +1,7 @@
 var Put = require('put');
+var Binary = require('binary');
 
-exports.buf = function (assert) {
+exports.chain = function (assert) {
     var buf = Put()
         .word16be(1337)
         .word8(1)
@@ -17,4 +18,17 @@ exports.buf = function (assert) {
             0x28, 0x23, 0x00, 0x00
         ]
     );
+};
+
+exports.parity = function (assert) {
+    [ 8, 16, 32 ].forEach(function (n) {
+        var max = Math.pow(2,n);
+        var step = Math.max(1, Math.floor(max / 1000));
+        
+        for (var i = -1 - n; i < max; i += step) {
+            var buf = Put()['word' + n + 'le'](i).buffer();
+            var j = Binary.parse(buf)['word' + n + 'le']('j').vars.j;
+            assert.eql(i,j);
+        }
+    });
 };
