@@ -28,7 +28,7 @@ exports.parity = function (assert) {
         for (var i = -1 - n; i < max; i += step) {
             var buf = Put()['word' + n + 'le'](i).buffer();
             var j = Binary.parse(buf)['word' + n + 'le']('j').vars.j;
-            assert.eql(i,j);
+            assert.eql(i < 0 ? i + max : i, j);
         }
     });
 };
