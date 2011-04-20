@@ -1,7 +1,8 @@
+var assert = require('assert');
 var Put = require('put');
 var Binary = require('binary');
 
-exports.chain = function (assert) {
+exports.chain = function () {
     var buf = Put()
         .word16be(1337)
         .word8(1)
@@ -24,7 +25,7 @@ exports.chain = function (assert) {
     );
 };
 
-exports.parity = function (assert) {
+exports.parity = function () {
     [ 'le', 'be' ].forEach(function (end) {
         [ 8, 16, 32 ].forEach(function (n) {
             var max = Math.pow(2,n);

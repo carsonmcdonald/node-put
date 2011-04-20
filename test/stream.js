@@ -1,6 +1,7 @@
+var assert = require('assert');
 var Put = require('put');
 
-exports.stream = function (assert) {
+exports.stream = function () {
     var written = 0;
     var stream = {
         write : function (buf) {
