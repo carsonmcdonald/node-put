@@ -69,14 +69,21 @@ function Put () {
                 buf[offset++] = 0;
                 offset += 4;
             }
-            else if (word.endian == 'big') {
-                for (var i = (word.bytes - 1) * 8; i >= 0; i -= 8) {
-                    buf[offset++] = (word.value >> i) & 0xff;
-                }
-            }
             else {
-                for (var i = 0; i < word.bytes * 8; i += 8) {
-                    buf[offset++] = (word.value >> i) & 0xff;
+                var big = word.endian === 'big';
+                var ix = big ? [ (word.bytes - 1) * 8, -8 ] : [ 0, 8 ];
+                
+                for (
+                    var i = ix[0];
+                    big ? i >= 0 : i < word.bytes * 8;
+                    i += ix[1]
+                ) {
+                    if (i >= 32) {
+                        buf[offset++] = Math.floor(word.value / Math.pow(2, i)) & 0xff;
+                    }
+                    else {
+                        buf[offset++] = (word.value >> i) & 0xff;
+                    }
                 }
             }
         });
