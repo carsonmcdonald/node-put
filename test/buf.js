@@ -58,3 +58,13 @@ exports.parity = function () {
         });
     });
 };
+
+exports.b64 = function () {
+    var buf = Put().word64be(1).buffer();
+    assert.eql([].slice.call(buf), [ 0, 0, 0, 0, 0, 0, 0, 1 ]);
+};
+
+exports.l64 = function () {
+    var buf = Put().word64le(1).buffer();
+    assert.eql([].slice.call(buf), [ 1, 0, 0, 0, 0, 0, 0, 0 ]);
+};
