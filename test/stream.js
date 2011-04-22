@@ -1,6 +1,7 @@
+var assert = require('assert');
 var Put = require('put');
 
-exports.stream = function (assert) {
+exports.stream = function () {
     var written = 0;
     var stream = {
         write : function (buf) {
@@ -10,11 +11,18 @@ exports.stream = function (assert) {
     };
     
     Put()
-        .word16be(24930)
-        .word32le(1717920867)
-        .word8(103)
+        .word16be(
+            256 * 'a'.charCodeAt(0)
+            + 'b'.charCodeAt(0)
+        )
+        .word32le(
+            Math.pow(256, 0) * 'c'.charCodeAt(0)
+            + Math.pow(256, 1) * 'd'.charCodeAt(0)
+            + Math.pow(256, 2) * 'e'.charCodeAt(0)
+            + Math.pow(256, 3) * 'f'.charCodeAt(0)
+        )
+        .word8('g'.charCodeAt(0))
         .write(stream)
     ;
-    
     assert.equal(written, 1);
 };
